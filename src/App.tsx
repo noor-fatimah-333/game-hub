@@ -14,9 +14,9 @@ function App() {
         <GridItem area="main">
           <GameGrid></GameGrid>
         </GridItem>
-        <Show when={{ base: false, lg: true }}>
+        {/* <Show when={{ base: false, lg: true }}>
           <GridItem area="aside">Aside</GridItem>
-        </Show>
+        </Show> */}
         <GridItem area="nav">
           <NavBar />
         </GridItem>
