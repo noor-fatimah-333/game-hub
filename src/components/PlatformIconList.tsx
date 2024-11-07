@@ -35,7 +35,7 @@ const PlatformIconList = ({ platforms }: Props) => {
       {platforms.map((platform) => {
         const IconComponent = iconMap[platform.slug] || BsGlobe;
 
-        return <IconComponent size="20px" color="gray" />;
+        return <IconComponent size="20px" color="gray" key={platform.id} />;
       })}
     </HStack>
   );
