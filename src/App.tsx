@@ -7,7 +7,7 @@ import { Genre } from "./hooks/useGenres";
 function App() {
   const showGenreList = useBreakpointValue({ base: false, lg: true });
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  console.log("selected genre : ", selectedGenre);
+
   return (
     <>
       <Grid
@@ -28,7 +28,10 @@ function App() {
         </GridItem>
         {showGenreList && (
           <GridItem area="aside" paddingX={"5px"}>
-            <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
+            <GenreList
+              onSelectGenre={(genre) => setSelectedGenre(genre)}
+              selectedGenre={selectedGenre}
+            />
           </GridItem>
         )}
       </Grid>
