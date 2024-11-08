@@ -3,8 +3,14 @@ import { Button } from "./ui/button";
 import { LuChevronDown } from "react-icons/lu";
 import usePlatforms from "../hooks/usePlatforms";
 import { Box } from "@chakra-ui/react";
+import { Platform } from "../hooks/useGames";
 
-const PlatformSelector = () => {
+interface Props {
+  selectedPlatform: Platform | null;
+  onSelectPlatform: (platform: Platform) => void;
+}
+
+const PlatformSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
   const { data, error } = usePlatforms();
   if (error) return null;
 
@@ -12,7 +18,7 @@ const PlatformSelector = () => {
     <MenuRoot size="md">
       <MenuTrigger>
         <Button variant="outline">
-          Platforms <LuChevronDown />
+          {selectedPlatform?.name || "Platforms"} <LuChevronDown />
         </Button>
       </MenuTrigger>
       <Box
@@ -33,6 +39,7 @@ const PlatformSelector = () => {
             _active={{ bg: "gray.600" }}
             fontSize="sm"
             p="2"
+            onClick={() => onSelectPlatform(platform)}
           >
             {platform.name}
           </Box>
