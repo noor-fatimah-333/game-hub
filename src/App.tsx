@@ -19,6 +19,7 @@ export interface gameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
+  searchText: string;
 }
 function App() {
   const showGenreList = useBreakpointValue({ base: false, lg: true });
@@ -37,7 +38,11 @@ function App() {
         }}
       >
         <GridItem area="nav">
-          <NavBar />
+          <NavBar
+            onSearch={(searchText) =>
+              setGameQuery({ ...gameQuery, searchText })
+            }
+          />
         </GridItem>
         <GridItem area="main">
           <Flex marginBottom="10px" gap={10}>
